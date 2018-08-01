@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { Observable } from '../../node_modules/rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MyServiceService {
-private _url = "contacs.json";
-  constructor(private _http: Http) {}
+export class MyService {
+private _url = "assets/contacts.json";
+  constructor(private http: HttpClient) {}
   getService(): Observable<any> {
-    return this._http.get(this._url)
-    .map ((response: Response) => <any> response.json)
+    return this.http.get(this._url).pipe(map ((response: Response) => {
+      debugger;
+      return response.json;
+    }));
   }
 }

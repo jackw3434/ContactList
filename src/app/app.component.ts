@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MyServiceService } from './my-service.service';
+import { MyService } from './my-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,10 @@ import { MyServiceService } from './my-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  Contact_Service = [];
-  constructor(private _myService: MyServiceService){}
+  Contact_Array = [];
+  constructor(private _myService: MyService){}
   ngOnInit(){
-    this._myService.getService().subscribe()
+    this._myService.getService().subscribe(data => this.Contact_Array = data)
   }
   title = 'sample-list';
 }
